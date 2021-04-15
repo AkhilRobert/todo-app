@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "dev": "tsc"
+    "dev:ts": "tsc -w",
+    "dev": "nodemon dist/index.js"
   },
   "dependencies": {
     "express": "^4.17.1"
