@@ -1,5 +1,6 @@
 import express from 'express';
 import todoRoutes from './routes/todo';
+import './db/db';
 
 const PORT = process.env.PORT || 5000;
 const app = express();
