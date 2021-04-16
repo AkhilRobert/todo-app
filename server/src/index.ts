@@ -1,5 +1,5 @@
 import express from 'express';
-import todoRoutes from './routes/todo';
+import todoRoutes from './routes/todo.route';
 import './db/db';
 
 const PORT = process.env.PORT || 5000;
