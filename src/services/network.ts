@@ -10,28 +10,28 @@ export async function getAllTodos() {
   });
 }
 
-export async function deleteTodo(id: string) {
-  return await fetch(`http://localhost:5000/api/todo/${id}`, {
-    method: 'DELETE',
-  });
+export function deleteTodo(id: string) {
+  fetch(`http://localhost:5000/api/todo/${id}`, {
+    method: 'DELETE'
+  }).then();
 }
 
-export async function updateTodo(id: string, data: Todo) {
-  return await fetch(`http://localhost:5000/api/todo/${id}`, {
+export function updateTodo(id: string, data: Todo) {
+  fetch(`http://localhost:5000/api/todo/${id}`, {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data),
-  });
+    body: JSON.stringify(data)
+  }).then();
 }
 
-export async function createTodo(data: Todo) {
-  return await fetch('http://localhost:5000/api/todo/', {
+export function createTodo(data: Todo) {
+  fetch('http://localhost:5000/api/todo/', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data),
-  });
+    body: JSON.stringify(data)
+  }).then();
 }
