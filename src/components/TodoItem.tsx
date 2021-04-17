@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  /* width: 300px; */
+const Container = styled.div<{ finished: boolean }>`
   width: 70%;
   background-color: #fff;
   position: relative;
+  opacity: ${(props) => (props.finished ? 0.45 : 1)};
 `;
 
 const CustomButton = styled.div`
@@ -36,23 +36,33 @@ const Input = styled.input`
 `;
 
 type Props = {
+  title: string;
   finished: boolean;
-  onFinish: () => void;
-  onDelete: () => void;
+  onFinish?: () => void;
+  onDelete?: () => void;
 };
 
-export default function TodoItem() {
+export default function TodoItem(props: Props) {
+  function getText() {
+    let content = <Text>{props.title}</Text>;
+
+    if (props.finished) {
+      content = (
+        <Text>
+          <del>{props.title}</del>
+        </Text>
+      );
+    }
+
+    return content;
+  }
+
   return (
-    <Container>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo cum veniam
-        illum quod odit, omnis explicabo ea! Architecto enim officia labore,
-        atque rem molestiae laudantium aut repellendus cumque dignissimos
-        distinctio.
-      </Text>
+    <Container finished={props.finished}>
+      {getText()}
       <ButtonContainer>
         <CustomButton>
-          <Input type="checkbox" />
+          <Input type="checkbox" checked={props.finished} />
         </CustomButton>
         <DeleteButton>
           <i className="fas fa-trash"></i>
