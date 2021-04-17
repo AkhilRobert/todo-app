@@ -26,12 +26,12 @@ export function updateTodo(id: string, data: Todo) {
   }).then();
 }
 
-export function createTodo(data: Todo) {
-  fetch('http://localhost:5000/api/todo/', {
+export async function createTodo(data: Todo) {
+  return await fetch('http://localhost:5000/api/todo/', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  }).then();
+  }).then(res => res.json());
 }

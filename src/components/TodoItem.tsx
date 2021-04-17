@@ -38,8 +38,9 @@ const Input = styled.input`
 type Props = {
   title: string;
   finished: boolean;
-  onFinish?: () => void;
-  onDelete?: () => void;
+  onFinish: (id: string, finished: boolean) => void;
+  onDelete: (id: string) => void;
+  id: string;
 };
 
 export default function TodoItem(props: Props) {
@@ -62,10 +63,14 @@ export default function TodoItem(props: Props) {
       {getText()}
       <ButtonContainer>
         <CustomButton>
-          <Input type="checkbox" checked={props.finished} />
+          <Input
+            type="checkbox"
+            checked={props.finished}
+            onChange={() => props.onFinish(props.id, props.finished)}
+          />
         </CustomButton>
-        <DeleteButton>
-          <i className="fas fa-trash"></i>
+        <DeleteButton onClick={() => props.onDelete(props.id)}>
+          <i className="fas fa-trash" />
         </DeleteButton>
       </ButtonContainer>
     </Container>

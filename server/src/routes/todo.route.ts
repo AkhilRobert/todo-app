@@ -29,8 +29,8 @@ todoRoutes.post('/', async (req: Request, res: Response) => {
     if (Object.keys(data).length !== 2) {
       res.status(400).json(message('one or more values is missing'));
     } else {
-      await new Todo({ ...data }).save();
-      res.status(202).json(message('created'));
+      const result = await new Todo({ ...data }).save();
+      res.status(202).json(result);
     }
   } catch (err) {
     console.log(err);
